@@ -24,7 +24,8 @@ _cache: dict = {}
 
 
 def strip_html(text: str) -> str:
-    text = re.sub(r"<[^>]+>", "", text or "")
+    text = re.sub(r"<!\[CDATA\[(.*?)]]>", r"\1", text or "", flags=re.DOTALL)
+    text = re.sub(r"<[^>]+>", "", text)
     return html.unescape(text).strip()
 
 
