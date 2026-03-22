@@ -1,0 +1,15 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8070:8000"
+    environment:
+      - EVENTS_RSS_URL=${EVENTS_RSS_URL:-https://www.sjakk.no/aktiviteter-feed.rss}
+      - NEWS_RSS_URL=${NEWS_RSS_URL:-https://www.sjakk.no/aktuelt-feed.rss}
+      - CACHE_TTL=${CACHE_TTL:-900}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
