@@ -8,7 +8,7 @@ from typing import Optional
 import feedparser
 from dotenv import load_dotenv
 from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 
 load_dotenv()
@@ -109,7 +109,7 @@ def index(request: Request):
 @app.get("/refresh")
 def refresh():
     _cache.clear()
-    return {"status": "cache cleared"}
+    return RedirectResponse(url="/", status_code=302)
 
 
 @app.get("/api/events")
