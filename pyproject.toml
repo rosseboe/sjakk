@@ -5,7 +5,7 @@ description = "Chess events and news aggregator for sjakk.no"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "fastapi>=0.136.0",
+    "fastapi>=0.136.1",
     "uvicorn[standard]>=0.46.0",
     "feedparser>=6.0.11",
     "jinja2>=3.1.4",
