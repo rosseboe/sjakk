@@ -21,6 +21,14 @@ uv run uvicorn main:app --reload
 
 Open [http://localhost:8000](http://localhost:8000).
 
+### Tests
+
+```bash
+uv run python -m unittest discover -s tests
+```
+
+The homepage rendering tests use mocked feeds and do not require network access.
+
 ## Running with Docker
 
 ```bash

@@ -96,9 +96,9 @@ def index(request: Request):
     events = cached_feed("events", EVENTS_RSS_URL)
     news = cached_feed("news", NEWS_RSS_URL)
     return templates.TemplateResponse(
-        "index.html",
-        {
-            "request": request,
+        request=request,
+        name="index.html",
+        context={
             "events": events,
             "news": news,
             "last_updated": datetime.now().strftime("%H:%M"),
